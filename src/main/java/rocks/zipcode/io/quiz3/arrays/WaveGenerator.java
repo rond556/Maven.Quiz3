@@ -8,17 +8,18 @@ import java.util.ArrayList;
 public class WaveGenerator {
     public static String[] wave(String str) {
         String waveString = str.toLowerCase();
-        String[] waveArray = new String[str.length()];
+        ArrayList<String> waveList = new ArrayList<>();
 
 
         for(int i = 0; i < str.length(); i++){
             String waveSubString = "";
             if(Character.isLetter(str.charAt(i))) {
                 waveSubString = waveString.substring(0, i) + waveString.substring(i, i + 1).toUpperCase() + waveString.substring(i + 1);
+                waveList.add(waveSubString);
             }
-            waveArray[i] = waveSubString;
+
         }
 
-        return waveArray;
+        return waveList.toArray(new String[waveList.size()]);
     }
 }

@@ -16,7 +16,10 @@ public class PigLatinGenerator {
         Integer index = -1;
         String[] stringArray = str.split(" ");
 
-        if (returnVowel(str)) return str + "way";
+        if(VowelUtils.startsWithVowel(str)) {return str + "way";}
+        if (!VowelUtils.hasVowels(str)) {
+            return str + "ay";
+        }
 
         for (int i = 0; i < length; i++) {
             if (isVowel(str.charAt(i))) {
@@ -24,9 +27,7 @@ public class PigLatinGenerator {
                 break;
             }
         }
-        if (index == -1) {
-            return str + "ay";
-        }
+
         if(stringArray.length > 1) {
             for(String s : stringArray){
                 returnVowel(s);
