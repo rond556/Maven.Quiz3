@@ -17,10 +17,10 @@ public class PigLatinGenerator {
         }
         if(stringArray.length > 1) {
             for(String s : stringArray){
-                sb.append(s.substring(index) + s.substring(0, index) + "ay ");
+                sb.append(s.substring(VowelUtils.getIndexOfFirstVowel(s)) + s.substring(0, VowelUtils.getIndexOfFirstVowel(s)) + "ay ");
             }
             return sb.toString();
         }
-        return str.substring(index) + str.substring(0, index) + "ay";
+        return str.substring(VowelUtils.getIndexOfFirstVowel(str)) + str.substring(0, VowelUtils.getIndexOfFirstVowel(str)) + "ay";
     }
 }
