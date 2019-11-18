@@ -21,7 +21,8 @@ public class PigLatinGenerator {
                     sb.append(s.substring(VowelUtils.getIndexOfFirstVowel(s)) + s.substring(0, VowelUtils.getIndexOfFirstVowel(s)) + "ay ");
                 }
             }
-            return sb.toString();
+            String pigLatinSentence = sb.toString();
+            return pigLatinSentence.trim();
         }
         return str.substring(VowelUtils.getIndexOfFirstVowel(str)) + str.substring(0, VowelUtils.getIndexOfFirstVowel(str)) + "ay";
     }
