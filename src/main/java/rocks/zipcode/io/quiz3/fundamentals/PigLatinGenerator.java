@@ -7,8 +7,6 @@ public class PigLatinGenerator {
 
     public String translate(String str) {
         StringBuilder sb = new StringBuilder();
-        Integer length = str.length();
-        Integer index = 1;
         String[] stringArray = str.split(" ");
 
         if(VowelUtils.startsWithVowel(str)) {return str + "way";}
@@ -16,8 +14,12 @@ public class PigLatinGenerator {
             return str + "ay";
         }
         if(stringArray.length > 1) {
-            for(String s : stringArray){
-                sb.append(s.substring(VowelUtils.getIndexOfFirstVowel(s)) + s.substring(0, VowelUtils.getIndexOfFirstVowel(s)) + "ay ");
+            for(String s : stringArray) {
+                if (VowelUtils.startsWithVowel(s)) {
+                    sb.append(s + "way ");
+                } else {
+                    sb.append(s.substring(VowelUtils.getIndexOfFirstVowel(s)) + s.substring(0, VowelUtils.getIndexOfFirstVowel(s)) + "ay ");
+                }
             }
             return sb.toString();
         }
