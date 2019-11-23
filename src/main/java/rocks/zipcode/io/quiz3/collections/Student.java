@@ -1,5 +1,6 @@
 package rocks.zipcode.io.quiz3.collections;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ public class Student {
     }
 
     public Student(List<Lab> labs) {
-        this.labs = labs;
+        this.labs = new ArrayList<>();
     }
 
     public Lab getLab(String labName) {
@@ -26,13 +27,19 @@ public class Student {
         return null;
     }
 
-    public void setLabStatus(String labName, LabStatus labStatus) {
+    public void setLabStatus(String labName, LabStatus labStatus){
         Lab lab = getLab(labName);
+        try{
         lab.setStatus(labStatus);
+        } catch (Exception e){
+            throw new UnsupportedOperationException(e);
+        }
+
     }
 
-    public void forkLab(Lab lab) {
+    public void forkLab(Lab lab){
         lab.setStatus(LabStatus.PENDING);
+        labs.add(lab);
     }
 
     public LabStatus getLabStatus(String labName) {
@@ -46,8 +53,11 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "labs=" + labs +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        for (int i = labs.size() - 1; i >= 0; i--) {
+            sb.append(labs.get(i).getName() + " > " + getLabStatus(labs.get(i).getName()) + "\n");
+        }
+        String result = sb.toString();
+        return result.trim();
     }
 }

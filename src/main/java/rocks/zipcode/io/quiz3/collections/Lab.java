@@ -28,12 +28,4 @@ public class Lab {
     public LabStatus getStatus() {
         return this.labStatus;
     }
-
-    @Override
-    public String toString() {
-        return "Lab{" +
-                "labName='" + labName + '\'' +
-                ", labStatus=" + labStatus +
-                '}';
-    }
 }
